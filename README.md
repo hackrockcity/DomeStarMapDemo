@@ -1,5 +1,7 @@
 # DomeStarMapDemo
 
+![Screenshot](screenshot.png)
+
 The DomeStarMap class generates a 360x360 map of pixels 
 to DomeStar x,y coordinates and distance (0.0-1.0).
 
