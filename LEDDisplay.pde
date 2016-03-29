@@ -160,9 +160,10 @@ public class LEDDisplay {
             b = (int)(Math.pow(b/256.0,this.gammaValue)*256);
           }
           
-          buffer[(getAddress(x, y)*3)+1] = byte(r);
-          buffer[(getAddress(x, y)*3)+2] = byte(g);
-          buffer[(getAddress(x, y)*3)+3] = byte(b);
+          int address = getAddress(x, y)*3;
+          buffer[address+1] = (byte) r;
+          buffer[address+2] = (byte) g;
+          buffer[address+3] = (byte) b;
         }
         else {
           r = int(brightness(bufPixels[y*w+x]));
