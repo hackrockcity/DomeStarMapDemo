@@ -149,9 +149,10 @@ public class LEDDisplay {
     for (int x=0; x<w; x++) {
       for (int y=0; y<h; y++) {        
         if (isRGB) {
-          r = int(red(bufPixels[y*w+x]));
-          g = int(green(bufPixels[y*w+x]));
-          b = int(blue(bufPixels[y*w+x]));
+          color pixel = bufPixels[y*w+x];
+          r = 0xff & (pixel >> 16);
+          g = 0xff & (pixel >> 8);
+          b = 0xff & pixel;
           
           if (enableGammaCorrection) {
             r = (int)(Math.pow(r/256.0,this.gammaValue)*256);
@@ -159,9 +160,10 @@ public class LEDDisplay {
             b = (int)(Math.pow(b/256.0,this.gammaValue)*256);
           }
           
-          buffer[(getAddress(x, y)*3)+1] = byte(r);
-          buffer[(getAddress(x, y)*3)+2] = byte(g);
-          buffer[(getAddress(x, y)*3)+3] = byte(b);
+          int address = getAddress(x, y)*3;
+          buffer[address+1] = (byte) r;
+          buffer[address+2] = (byte) g;
+          buffer[address+3] = (byte) b;
         }
         else {
           r = int(brightness(bufPixels[y*w+x]));
