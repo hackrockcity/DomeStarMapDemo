@@ -149,7 +149,7 @@ public class LEDDisplay {
     for (int x=0; x<w; x++) {
       for (int y=0; y<h; y++) {        
         if (isRGB) {
-          color pixel = bufPixels[y * w + x];
+          color pixel = bufPixels[y*w+x];
           r = 0xff & (pixel >> 16);
           g = 0xff & (pixel >> 8);
           b = 0xff & pixel;
